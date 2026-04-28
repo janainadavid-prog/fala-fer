@@ -148,6 +148,23 @@ body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--bg);c
 .btn-base-view:hover{background:var(--rose-soft);}
 .btn-base-dl{display:inline-flex;align-items:center;gap:5px;padding:7px 14px;background:var(--rose);color:#fff;border:1.5px solid var(--rose);border-radius:8px;font-family:inherit;font-size:11px;font-weight:700;cursor:pointer;transition:.14s;text-decoration:none;}
 .btn-base-dl:hover{background:var(--rose-d,#c41523);}
+
+#periodo-overlay{
+  display:none;
+  position:fixed;
+  top:0;
+  left:var(--sw);
+  right:0;
+  bottom:0;
+  background:var(--bg);
+  z-index:50;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:40px;
+}
+#periodo-overlay.visible{display:flex;}
 </style>
 </head>
 <body>
@@ -206,6 +223,16 @@ body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--bg);c
 </nav>
 
 <main id="main">
+
+<div id="periodo-overlay">
+  <div style="font-size:60px;margin-bottom:20px">📅</div>
+  <div style="font-size:22px;font-weight:800;color:var(--rose);margin-bottom:12px" id="overlay-titulo">Ciclo Planejado</div>
+  <div style="font-size:14px;color:var(--muted);line-height:1.8;max-width:400px" id="overlay-msg">
+    Este ciclo ainda não foi iniciado.<br>
+    Os dados estarão disponíveis após o disparo e encerramento da pesquisa.
+  </div>
+</div>
+
 <section id="page-visao" class="page active">
   <div class="hero">
     <div>
@@ -355,20 +382,49 @@ function periodoTemDados(){
   return false;
 }
 function msgPeriodoPlanejado(){
-  var lbl=PERIODOS_LABELS[F.periodo]||F.periodo;
-  return '<div style="text-align:center;padding:40px 20px"><div style="font-size:36px;margin-bottom:12px">&#128197;</div><div style="font-size:15px;font-weight:700;color:var(--rose);margin-bottom:6px">Per\u00edodo Planejado</div><div style="font-size:12px;color:var(--muted);line-height:1.6">Os dados de <strong>'+lbl+'</strong> ainda n\u00e3o foram coletados.<br>Dispon\u00edvel ap\u00f3s o disparo e encerramento da pesquisa.</div></div>';
+  var labels={'maio-26':'Maio/26','junho-26':'Junho/26','julho-26':'Julho/26',
+    'agosto-26':'Agosto/26','setembro-26':'Setembro/26','outubro-26':'Outubro/26',
+    'novembro-26':'Novembro/26','dezembro-26':'Dezembro/26'};
+  var lbl=labels[F.periodo]||F.periodo;
+  return '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:65vh;text-align:center;padding:40px">'
+    +'<div style="font-size:60px;margin-bottom:20px">&#128197;</div>'
+    +'<div style="font-size:22px;font-weight:800;color:var(--rose);margin-bottom:12px">Ciclo Planejado</div>'
+    +'<div style="font-size:14px;color:var(--muted);line-height:1.8;max-width:400px">'
+    +'O ciclo de <strong style="color:var(--text)">'+lbl+'</strong> ainda n&#227;o foi iniciado.<br>'
+    +'Os dados estar&#227;o dispon&#237;veis ap&#243;s o<br>disparo e encerramento da pesquisa.</div></div>';
 }
-function renderArtigos(){if(typeof ARTIGOS==='undefined')return;var op=F.op,fr=F.frente;var rows=ARTIGOS.filter(function(a){return(!op||a.operacao===op)&&(!fr||a.frente===fr);});setEl('artigos-count',String(rows.length));if(!rows.length){setEl('artigos-body','<tr><td colspan="3" class="td-empty">Nenhum artigo para o filtro selecionado</td></tr>');return;}rows.sort(function(a,b){return a.classificacao.localeCompare(b.classificacao)||a.frente.localeCompare(b.frente);});var t=rows.map(function(a){var c=a.classificacao;var col=c.indexOf('Desatualizado')>=0?'var(--amber)':c.indexOf('Dif')>=0?'var(--violet)':c.indexOf('acesso')>=0?'var(--blue)':'var(--rose)';return'<tr><td><span class="tag-frente">'+a.frente+'</span></td><td><span style="font-size:10px;font-weight:700;white-space:nowrap;color:'+col+'">'+c+'</span></td><td style="font-size:13px;font-weight:700;text-align:center;letter-spacing:.5px;font-family:monospace">'+a.numero+'</td></tr>';}).join('');setEl('artigos-body',t);}
+
 function renderAll(){
+  renderVisaoGerencial();
+
+  var overlay=document.getElementById('periodo-overlay');
   if(!periodoTemDados()){
-    var msg=msgPeriodoPlanejado();
-    ['plat-frente-body','proc-frente-body'].forEach(function(id){var e=document.getElementById(id);if(e)e.innerHTML='<tr><td colspan="9">'+msg+'</td></tr>';});
-    ['plat-dif-body','plat-facil-body'].forEach(function(id){var e=document.getElementById(id);if(e)e.innerHTML='<tr><td colspan="3">'+msg+'</td></tr>';});
-    ['plat-vozes-grid','proc-vozes-sit','proc-vozes-ajuda'].forEach(function(id){var e=document.getElementById(id);if(e)e.innerHTML=msg;});
-    renderVisaoGerencial();
+    var labels={'maio-26':'Maio/26','junho-26':'Junho/26','julho-26':'Julho/26',
+      'agosto-26':'Agosto/26','setembro-26':'Setembro/26','outubro-26':'Outubro/26',
+      'novembro-26':'Novembro/26','dezembro-26':'Dezembro/26'};
+    var lbl=labels[F.periodo]||F.periodo;
+    document.getElementById('overlay-msg').innerHTML=
+      'O ciclo de <strong style="color:var(--text)">'+lbl+'</strong> ainda n&#227;o foi iniciado.<br>'
+      +'Os dados estar&#227;o dispon&#237;veis ap&#243;s o disparo e encerramento da pesquisa.';
+    if(overlay) overlay.classList.add('visible');
     return;
   }
-  const pr=filterRows(RAW.plat_rows),pc=filterRows(RAW.proc_rows),pk=calcPlat(pr),prk=calcProc(pc);renderVisaoGerencial();renderPlatKpis(pk,getMopBase('plataformas'));renderProcKpis(prk,getMopBase('processos'));renderPlatTable(groupByFrente(pr,calcPlat));renderProcTable(groupByFrente(pc,calcProc));renderPlatDif(pk);renderPlatFacil();renderVozes(RAW.vozes_plat,'plat-vozes-grid',8);renderVozes(RAW.vozes_proc,'proc-vozes-sit',8);renderVozes(RAW.vozes_ajuda,'proc-vozes-ajuda',8);renderArtigos();}
+  if(overlay) overlay.classList.remove('visible');
+
+
+  var pr=filterRows(RAW.plat_rows),pc=filterRows(RAW.proc_rows),pk=calcPlat(pr),prk=calcProc(pc);
+  renderPlatKpis(pk,getMopBase('plataformas'));
+  renderProcKpis(prk,getMopBase('processos'));
+  renderPlatTable(groupByFrente(pr,calcPlat));
+  renderProcTable(groupByFrente(pc,calcProc));
+  renderPlatDif(pk);
+  renderPlatFacil();
+  renderVozes(RAW.vozes_plat,'plat-vozes-grid',8);
+  renderVozes(RAW.vozes_proc,'proc-vozes-sit',8);
+  renderVozes(RAW.vozes_ajuda,'proc-vozes-ajuda',8);
+  renderArtigos();
+}
+
 function syncChips(g,f){document.querySelectorAll(`#${g} .chip`).forEach(c=>c.classList.toggle('active',(c.dataset.frente||'')===f));}
 function applyFilters(){F.op=document.getElementById('f-operacao').value;F.frente=document.getElementById('f-frente').value;F.periodo=document.getElementById('f-periodo').value;syncChips('plat-chips',F.frente);syncChips('proc-chips',F.frente);renderAll();}
 function clearAllFilters(){F={op:'',frente:'',periodo:''};document.getElementById('f-operacao').value='';document.getElementById('f-frente').value='';document.getElementById('f-periodo').value='';syncChips('plat-chips','');syncChips('proc-chips','');renderAll();}
