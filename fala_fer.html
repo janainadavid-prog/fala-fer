@@ -30,7 +30,7 @@ body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--bg);c
 .nav-icon{font-size:14px;width:18px;text-align:center;flex-shrink:0;}
 .nav-badge{margin-left:auto;font-size:8px;font-weight:700;padding:1px 5px;border-radius:20px;background:var(--rose-soft);color:var(--rose);border:1px solid var(--rose-mid);white-space:nowrap;}
 
-.sb-filters{margin-top:auto;padding:14px 16px 0;border-top:1.5px solid var(--border);}
+.sb-filters{padding:12px 16px 14px;border-bottom:1.5px solid var(--border);}
 .sb-filter-title{font-size:9px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase;color:var(--rose-mid);margin-bottom:10px;}
 .sb-filter-group{margin-bottom:9px;}
 .sb-filter-label{font-size:10px;font-weight:700;color:var(--text-mid);margin-bottom:4px;display:block;}
@@ -220,27 +220,6 @@ body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--bg);c
 .icard-texto{font-size:11px;color:var(--text-mid);line-height:1.55;}
 .icard-tag{display:inline-block;font-size:9px;font-weight:700;padding:2px 7px;border-radius:10px;margin-top:6px;}
 
-/* ── Topbar fixa ── */
-.topbar{
-  position:fixed;top:0;left:var(--sw);right:0;
-  z-index:90;background:#fff;
-  border-bottom:1.5px solid var(--border);
-  padding:8px 28px;
-  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
-  box-shadow:0 1px 6px rgba(0,0,0,.07);
-  height:52px;
-}
-.topbar-title{font-size:13px;font-weight:800;color:var(--text);margin-right:auto;}
-.topbar-label{font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--rose);}
-.topbar select{border:1px solid var(--border);border-radius:6px;padding:4px 10px;font-size:12px;background:var(--bg);cursor:pointer;outline:none;color:var(--text);}
-.topbar-clear{background:none;border:1px solid var(--border);border-radius:6px;padding:4px 10px;font-size:12px;color:var(--muted);cursor:pointer;}
-.topbar-clear:hover{background:var(--rose-soft);color:var(--rose);border-color:var(--rose-mid);}
-.topbar-date{font-size:11px;color:var(--muted);}
-.topbar-date strong{color:var(--text);}
-/* Compensar altura da topbar no conteúdo */
-#main{padding-top:60px;}
-
-
 /* ===== CSS Plataformas Reestruturada ===== */
 .ch{display:flex;background:#1a1a2e;color:#fff;border-radius:8px 8px 0 0;}
 .ch div{flex:1;text-align:center;padding:8px 4px;font-size:10px;font-weight:700;text-transform:uppercase;}
@@ -281,41 +260,6 @@ body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--bg);c
 </style>
 </head>
 <body>
-<div class="topbar">
-  <span class="topbar-title">Learning Experience &mdash; eLos</span>
-  <span class="topbar-label">Período</span>
-  <select id="f-periodo" onchange="applyFilters()">
-    <option value="abril-26" selected>Abril/26</option>
-    <option value="maio-26">Maio/26</option>
-    <option value="junho-26">Junho/26</option>
-    <option value="julho-26">Julho/26</option>
-    <option value="agosto-26">Agosto/26</option>
-    <option value="setembro-26">Setembro/26</option>
-    <option value="outubro-26">Outubro/26</option>
-    <option value="novembro-26">Novembro/26</option>
-    <option value="dezembro-26">Dezembro/26</option>
-  </select>
-  <span class="topbar-label">Operação</span>
-  <select id="f-operacao" onchange="applyFilters()">
-    <option value="">Todas</option>
-    <option value="CSU">CSU</option>
-    <option value="AeC">AeC</option>
-  </select>
-  <span class="topbar-label">Frente</span>
-  <select id="f-frente" onchange="applyFilters()">
-    <option value="">Todas</option>
-    <option value="CX">CX</option>
-    <option value="DX">DX</option>
-    <option value="PX">PX</option>
-    <option value="Fraude">Fraude</option>
-    <option value="Multicategorias">Multicategorias</option>
-    <option value="Fintech">Fintech</option>
-    <option value="Reputação">Reputação</option>
-  </select>
-  <button class="topbar-clear" onclick="clearAllFilters()">&#10005; Limpar</button>
-
-</div>
-
 <nav id="sidebar">
   <div style="padding:8px 20px;border-bottom:1.5px solid #EDE0E0;display:flex;justify-content:center;align-items:center;">
     <img src="https://i.postimg.cc/R3wjfbfZ/Sorriso-1-100.jpg" alt="Logo" style="width:48px;height:48px;object-fit:contain;display:block;border-radius:4px;">
@@ -323,6 +267,49 @@ body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--bg);c
   <div style="padding:6px 16px 8px;border-bottom:1.5px solid #EDE0E0;text-align:center;font-size:10px;color:#9b6b6b;">
     Atualizado em <strong id="data-atualizacao">03/06/2026</strong>
   </div>
+  <div class="sb-filters">
+  <div class="sb-filter-title">Filtros</div>
+
+  <div class="sb-filter-group">
+    <label class="sb-filter-label">Período</label>
+    <select class="sb-select" id="f-periodo" onchange="applyFilters()">
+      <option value="abril-26" selected>Abril/26</option>
+      <option value="maio-26">Maio/26</option>
+      <option value="junho-26">Junho/26</option>
+      <option value="julho-26">Julho/26</option>
+      <option value="agosto-26">Agosto/26</option>
+      <option value="setembro-26">Setembro/26</option>
+      <option value="outubro-26">Outubro/26</option>
+      <option value="novembro-26">Novembro/26</option>
+      <option value="dezembro-26">Dezembro/26</option>
+    </select>
+  </div>
+
+  <div class="sb-filter-group">
+    <label class="sb-filter-label">Operação</label>
+    <select class="sb-select" id="f-operacao" onchange="applyFilters()">
+      <option value="">Todas</option>
+      <option value="CSU">CSU</option>
+      <option value="AeC">AeC</option>
+    </select>
+  </div>
+
+  <div class="sb-filter-group">
+    <label class="sb-filter-label">Frente</label>
+    <select class="sb-select" id="f-frente" onchange="applyFilters()">
+      <option value="">Todas</option>
+      <option value="CX">CX</option>
+      <option value="DX">DX</option>
+      <option value="PX">PX</option>
+      <option value="Fraude">Fraude</option>
+      <option value="Multicategorias">Multicategorias</option>
+      <option value="Fintech">Fintech</option>
+      <option value="Reputação">Reputação</option>
+    </select>
+  </div>
+
+  <button class="sb-clear" onclick="clearAllFilters()">✕ Limpar filtros</button>
+</div>
   <div class="sb-group">Navegação</div>
   <button class="nav-item active" data-page="visao"       onclick="goTo('visao',this)"><span class="nav-icon">📊</span> Visão Gerencial</button>
   <button class="nav-item"        data-page="plataformas" onclick="goTo('plataformas',this)"><span class="nav-icon">🖥️</span> Plataformas e Sistemas</button>
@@ -340,6 +327,8 @@ body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--bg);c
   <!-- Adicionar novos ciclos abaixo:
   <a class="nav-item" href="LINK_MAIO" target="_blank"><span class="nav-icon">&#128202;</span> Maio/26</a>
   -->
+
+
 </nav>
 
 <main id="main">
@@ -355,7 +344,9 @@ body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--bg);c
 
 <section id="page-visao" class="page active">
 
-  <div id="vg-acomp-mensal" style="margin-bottom:24px">
+  
+<div style="font-size:9px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase;color:var(--rose);margin:24px 0 8px;">📊 PARTICIPAÇÃO DO PERÍODO</div>
+<div id="vg-acomp-mensal" style="margin-bottom:24px">
     <div style="text-align:center;padding:20px;color:var(--muted);font-size:12px">Carregando...</div>
   </div>
   <!-- manter IDs para compatibilidade com renderVisaoGerencial -->
@@ -372,132 +363,40 @@ body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--bg);c
   
 
   
-  <div style="font-size:13px;font-weight:700;color:#1a1a2e;margin-bottom:10px;display:flex;align-items:center;gap:6px">
+  
+
+<div style="font-size:9px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase;color:var(--rose);margin-bottom:8px;">🔴 DIAGNÓSTICO RÁPIDO</div>
+<!-- ========================================================
+     MELHORIA 1 — Painel Executivo (v5)
+     4 cards de alerta: piorando, abaixo da meta, dor #1, delta
+======================================================== -->
+<div id="painel-executivo-v5" style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px;padding:18px 20px;background:var(--white);border:1.5px solid var(--border);border-radius:var(--r);box-shadow:var(--sh);">
+  <!-- preenchido dinamicamente por renderDiagnostico() -->
+</div>
+<!-- /MELHORIA 1 --><div style="font-size:13px;font-weight:700;color:#1a1a2e;margin-bottom:10px;display:flex;align-items:center;gap:6px">
     <span>🔍</span> Visão Integrada
   </div>
+  <div style="font-size:12px;color:var(--muted);margin-top:2px;">Desempenho por pilar — identifique onde cada frente precisa de atenção</div>
   <div class="pan-grid" id="pan-grid-visao" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))"></div>
+
+<div style="font-size:9px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase;color:var(--rose);margin:24px 0 8px;">📌 ONDE AGIR AGORA</div><div style="font-size:12px;color:var(--muted);margin-bottom:12px;">Artigos do Knowledge classificados por urgência e impacto operacional</div>
+<!-- ========================================================
+     MELHORIA 2 — Matriz de Priorização — Knowledge Base (v5)
+     Quadrantes: urgência × impacto
+======================================================== -->
+<div id="matriz-priorizacao-knowledge-v5" style="margin-top:24px;">
+  <div id="matriz-knowledge-header" style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+    <div style="width:4px;height:28px;background:var(--rose);border-radius:4px;"></div>
+    <div>
+      <div style="font-size:17px;font-weight:800;color:var(--text);letter-spacing:-.2px;">📌 Matriz de Priorização — Knowledge Base</div>
+      <div id="matriz-knowledge-subtitle" style="font-size:11.5px;color:var(--muted);margin-top:2px;">Classificação por urgência (menções) × impacto (tipo de problema) · dados do ciclo Mai/26</div>
+    </div>
+  </div>
+  <div id="matriz-knowledge-body"></div>
+</div>
+<!-- /MELHORIA 2 -->
+
   <div style="margin-bottom:18px">
-  <!-- Grid correlações — controlado pelo filtro de período -->
-  <div id="corr-vg-abril" style="display:block">
-  <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px">
-    <div style="width:4px;height:28px;background:var(--rose);border-radius:4px"></div>
-    <div>
-      <div style="font-size:17px;font-weight:800;color:var(--text);letter-spacing:-.2px">📊 Padrões do Período</div>
-      <div style="font-size:11.5px;color:var(--muted);margin-top:2px">Como os blocos deste período se influenciam entre si</div>
-    </div>
-  </div>
-    <div class="pan-grid" style="grid-template-columns:repeat(2,1fr);margin-bottom:18px">
-
-      <!-- Card 1: Plataformas x Processos -->
-      <div class="pan-card" style="border-top:3px solid var(--rose)">
-        <div class="pan-head">🔗 Plataformas &amp; Sistemas × Processos</div>
-        <div class="pan-body">
-          <div style="background:#FFF1F2;border-radius:6px;padding:10px 12px;margin-bottom:10px">
-            <div style="font-size:10px;font-weight:700;color:var(--rose);margin-bottom:4px">⚠️ PADRÃO SISTÊMICO</div>
-            <div style="font-size:11.5px;color:var(--text);line-height:1.6">As frentes que mais travam em plataforma são as mesmas que mais carecem de processo definido — a sobreposição não é acaso. Quando falta guia operacional, qualquer instabilidade de sistema vira bloqueio total.</div>
-          </div>
-          <div style="background:#F0FDF4;border-radius:6px;padding:10px 12px">
-            <div style="font-size:10px;font-weight:700;color:#065F46;margin-bottom:4px">✅ REFERÊNCIA POSITIVA</div>
-            <div style="font-size:11.5px;color:var(--text);line-height:1.6">Fraude é a única frente que combina boa fluência nas ferramentas com alta clareza de processo — os dois pilares se reforçam mutuamente.</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 2: T&Q x Plataformas -->
-      <div class="pan-card" style="border-top:3px solid var(--blue)">
-        <div class="pan-head" style="border-color:var(--blue)">🔗 Treinamento &amp; Qualidade × Plataformas</div>
-        <div class="pan-body">
-          <div style="background:#EFF6FF;border-radius:6px;padding:10px 12px;margin-bottom:10px">
-            <div style="font-size:10px;font-weight:700;color:var(--blue);margin-bottom:4px">🔍 PARADOXO OPERACIONAL</div>
-            <div style="font-size:11.5px;color:var(--text);line-height:1.6">O treinamento é bem avaliado, mas a dificuldade com plataformas persiste. O paradoxo revela que o conteúdo ensinado e as ferramentas usadas no dia a dia vivem em universos separados — preparar bem na teoria não garante fluência na prática.</div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Card 3: T&Q x Processos -->
-      <div class="pan-card" style="border-top:3px solid var(--violet)">
-        <div class="pan-head" style="border-color:var(--violet)">🔗 Treinamento &amp; Qualidade × Processos</div>
-        <div class="pan-body">
-          <div style="background:#F5F3FF;border-radius:6px;padding:10px 12px;margin-bottom:10px">
-            <div style="font-size:10px;font-weight:700;color:var(--violet);margin-bottom:4px">🔍 APRENDIZADO DESCONECTADO DA OPERAÇÃO</div>
-            <div style="font-size:11.5px;color:var(--text);line-height:1.6">A contradição central de Abril: o treinamento é aprovado, mas o processo operacional não está definido. Aprender bem o conteúdo não resolve o problema quando a execução do dia a dia não tem um rito claro a seguir — o conhecimento fica sem chão.</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 4: Visão Cruzada Abril -->
-      <div class="pan-card" style="background:#DC2626;border:2px solid #DC2626;border-radius:10px">
-        <div class="pan-head" style="color:#ffffff;border-color:#DC2626">🔎 Visão Cruzada — Fintech como Frente Crítica de Abril</div>
-        <div style="background:rgba(255,255,255,0.12);border-radius:6px;padding:10px 12px;margin-bottom:10px">
-          <div style="font-size:10px;font-weight:700;color:#ffffff;margin-bottom:4px">⚠️ TRIPLA SOBREPOSIÇÃO</div>
-          <div style="font-size:11px;color:rgba(255,255,255,0.9);margin-bottom:8px">Fintech aparece entre as piores em todos os 3 blocos analisados em Abril</div>
-          <div style="font-size:12px;font-weight:700;color:#ffffff;margin-bottom:6px">Plataforma → Processo → T&amp;Q</div>
-          <div style="font-size:11px;color:rgba(255,255,255,0.9);line-height:1.6">Fintech é a única frente que aparece simultaneamente entre as piores nos três blocos — a coincidência nos três pilares ao mesmo tempo é o que confirma a cadeia sistêmica, não a soma de problemas isolados.</div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <div id="corr-vg-maio" style="display:none">
-  <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px">
-    <div style="width:4px;height:28px;background:var(--rose);border-radius:4px"></div>
-    <div>
-      <div style="font-size:17px;font-weight:800;color:var(--text);letter-spacing:-.2px">📊 Padrões do Período</div>
-      <div style="font-size:11.5px;color:var(--muted);margin-top:2px">Como os blocos deste período se influenciam entre si</div>
-    </div>
-  </div>
-    <div class="pan-grid" style="grid-template-columns:repeat(2,1fr);margin-bottom:18px">
-
-      <!-- Card 1: Processos x Suporte -->
-      <div class="pan-card" style="border-top:3px solid var(--rose)">
-        <div class="pan-head">🔗 Processos × Suporte Operacional</div>
-        <div class="pan-body">
-          <div style="background:#FFF1F2;border-radius:6px;padding:10px 12px;margin-bottom:10px">
-            <div style="font-size:10px;font-weight:700;color:var(--rose);margin-bottom:4px">🔍 CORRELAÇÃO POR FRENTE CONFIRMADA</div>
-            <div style="font-size:11.5px;color:var(--text);line-height:1.6">A relação é direcional: onde o processo está claro, o suporte é menos demandado e mais eficiente — a FER resolve por conta própria. Onde o processo não existe, o suporte vira muleta: é acionado para preencher a lacuna que o processo deveria cobrir.<br>PX e Fraude são os extremos opostos dessa relação — e a distância entre eles confirma o padrão.</div>
-          </div>
-          <div style="background:#FFFBEB;border-radius:6px;padding:10px 12px">
-            <div style="font-size:10px;font-weight:700;color:#92400E;margin-bottom:4px">⚠️ AÇÃO PRIORITÁRIA</div>
-            <div style="font-size:11.5px;color:var(--text);line-height:1.6">Resolver o processo é resolver o suporte: as frentes com maior acionamento de suporte são exatamente as que carecem de rito operacional definido.</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 2: Plataformas x Suporte -->
-      <div class="pan-card" style="border-top:3px solid var(--violet)">
-        <div class="pan-head" style="border-color:var(--violet)">🔗 Plataformas &amp; Sistemas × Suporte Operacional</div>
-        <div class="pan-body">
-          <div style="background:#F5F3FF;border-radius:6px;padding:10px 12px;margin-bottom:10px">
-            <div style="font-size:10px;font-weight:700;color:var(--violet);margin-bottom:4px">🔍 PADRÃO IDENTIFICADO</div>
-            <div style="font-size:11.5px;color:var(--text);line-height:1.6">A dificuldade persistente com as ferramentas — em especial o Knowledge — gera uma demanda de suporte que resolve o sintoma imediato, mas não a causa raiz. O suporte é acionado para compensar o que a ferramenta não entrega: a resposta certa, na hora certa. Enquanto o Knowledge não funcionar de forma confiável, o suporte continuará sendo a válvula de escape da operação.</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 3: Suporte x Experiência -->
-      <div class="pan-card" style="border-top:3px solid var(--blue)">
-        <div class="pan-head" style="border-color:var(--blue)">🔗 Suporte Operacional × Experiência do Colaborador</div>
-        <div class="pan-body">
-          <div style="background:#EFF6FF;border-radius:6px;padding:10px 12px;margin-bottom:10px">
-            <div style="font-size:10px;font-weight:700;color:var(--blue);margin-bottom:4px">🔍 CORRELAÇÃO DIRETA</div>
-            <div style="font-size:11.5px;color:var(--text);line-height:1.6">O suporte é o mediador da experiência: quando ele resolve, a FER sente que a empresa está do lado dela — e isso se reflete no NPS. Quando não resolve, a sensação de abandono contamina a percepção geral do trabalho. As frentes com suporte mais efetivo têm consistentemente NPS melhor; as que mais acionam e menos resolvem ficam nas piores posições.</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 4: Visão Cruzada Maio -->
-      <div class="pan-card" style="background:#DC2626;border:2px solid #DC2626;border-radius:10px">
-        <div class="pan-head" style="color:#ffffff;border-color:#DC2626">🔎 Visão Cruzada — PX como Frente Crítica de Maio</div>
-        <div style="font-size:11px;color:rgba(255,255,255,0.9);margin-bottom:10px">PX aparece entre as piores em 3 dos 4 blocos analisados em Maio</div>
-        <div style="font-size:13px;font-weight:700;color:#ffffff;margin-bottom:6px">Processos → Suporte → Experiência</div>
-        <div style="font-size:11px;color:rgba(255,255,255,0.9);line-height:1.6">PX aparece nas piores posições nos três blocos ao mesmo tempo — e a ordem importa: a lacuna de processo alimenta o excesso de suporte, que por sua vez não consegue compensar a experiência deteriorada. Uma frente prioritária, uma cadeia de intervenção clara.</div>
-      </div>
-
-    </div>
-  </div>
-
   <!-- Painel Inteligência Consolidada -->
   <div id="painel-inteligencia" style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:4px">
     <div style="background:#FEF2F2;border:2px solid #EF4444;border-radius:10px;padding:20px 22px">
@@ -544,9 +443,7 @@ body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--bg);c
   <div class="g g2">
     <div>
       <div class="card"><div class="ct">💡 Insights Gerenciais</div>
-        <div class="ic2 ic-c"><div class="il">🔴 Crítico</div><p>Knowledge concentra 65,5% das dificuldades.</p></div>
-        <div class="ic2 ic-w"><div class="il">🟡 Atenção</div><p>Fintech com 72,7% de participação — 8,3pp abaixo da meta de 81%.</p></div>
-        <div class="ic2 ic-g"><div class="il">🟢 Positivo</div><p>Oráculo percebido como mais fácil cresce +4pp — impacto positivo da atualização.</p></div>
+        <div id="plat-insights-container"></div>
       </div>
       <div class="card"><div class="ct">📈 Anterior → Atual</div>
         <div style="border-radius:8px;overflow:hidden;border:1px solid var(--border)">
@@ -845,6 +742,10 @@ Além disso, os drivers frequentemente relatam que já aguardaram 15 minutos e r
           </div>
         </div></div>
   </div>
+
+<div style="background:var(--rose-soft);border:1.5px solid var(--rose-mid);border-radius:8px;padding:12px 16px;font-size:12px;color:var(--text-mid);margin-top:16px;">📌 A matriz de priorização do Knowledge está disponível na <strong>Visão Gerencial</strong> para facilitar o acesso executivo.</div>
+
+
 </section>
 
 <section id="page-treinamento" class="page">
@@ -1027,10 +928,10 @@ Além disso, os drivers frequentemente relatam que já aguardaram 15 minutos e r
 
   <!-- 4 KPI cards em grid g4 -->
   <div class="g g4" style="margin-bottom:14px">
-    <div class="kpi b" style="border-bottom:5px solid #0ea5e9;padding-bottom:9px"><div class="kl">Facilidade Operacional</div><div class="kv">4,46<span style="font-size:13px">/5</span></div><div class="ks">89% da escala</div></div>
-    <div class="kpi g" style="border-bottom:5px solid #10b981;padding-bottom:9px"><div class="kl">NPS Score</div><div class="kv">53,1%<span style="font-size:13px"></span></div><div class="ks">média NPS: 8,43</div></div>
+    <div class="kpi b" style="border-bottom:5px solid #0ea5e9;padding-bottom:9px"><div class="kl">Fluidez da Experiência</div><div class="kv">4,46<span style="font-size:13px">/5</span></div><div class="ks">89% da escala</div></div>
+    <div class="kpi g" style="border-bottom:5px solid #10b981;padding-bottom:9px"><div class="kl">Recomendação do Programa</div><div class="kv">53,1%<span style="font-size:13px"></span></div><div class="ks">média NPS: 8,43</div></div>
     <div class="kpi g" style="padding-bottom:0;overflow:hidden">
-      <div style="padding:14px 16px 9px"><div class="kl">Percepção de Melhoria</div><div class="kv">81,8%</div><div class="ks">percebem melhoria</div></div>
+      <div style="padding:14px 16px 9px"><div class="kl">Impacto Percebido</div><div class="kv">81,8%</div><div class="ks">percebem melhoria</div></div>
       <div style="height:5px;display:flex"><div style="flex:41;background:#10b981"></div><div style="flex:41;background:#f59e0b"></div><div style="flex:18;background:#ef4444"></div></div>
     </div>
     <div class="kpi y"><div class="kl">Principal Fator de Impacto</div><div class="kv" style="font-size:16px">Processo</div><div class="ks">42,7%</div></div>
@@ -1059,6 +960,8 @@ Além disso, os drivers frequentemente relatam que já aguardaram 15 minutos e r
       <tr><td>🛠️ Suporte Operacional</td><td>268</td><td>10,7%</td></tr>
     </tbody></table>
   </div>
+
+
 </section>
 
 
@@ -1247,6 +1150,8 @@ Além disso, os drivers frequentemente relatam que já aguardaram 15 minutos e r
       </div>
     </div>
   </div>
+
+
 </section>
 
 
@@ -2222,6 +2127,128 @@ Além disso, os drivers frequentemente relatam que já aguardaram 15 minutos e r
   </div>
 </div>
 
+
+
+  <div id="corr-vg-abril" style="display:block">
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px">
+    <div style="width:4px;height:28px;background:var(--rose);border-radius:4px"></div>
+    <div>
+      <div style="font-size:17px;font-weight:800;color:var(--text);letter-spacing:-.2px">📊 Padrões do Período</div>
+      <div style="font-size:11.5px;color:var(--muted);margin-top:2px">Como os blocos deste período se influenciam entre si</div>
+    </div>
+  </div>
+    <div class="pan-grid" style="grid-template-columns:repeat(2,1fr);margin-bottom:18px">
+
+      <!-- Card 1: Plataformas x Processos -->
+      <div class="pan-card" style="border-top:3px solid var(--rose)">
+        <div class="pan-head">🔗 Plataformas &amp; Sistemas × Processos</div>
+        <div class="pan-body">
+          <div style="background:#FFF1F2;border-radius:6px;padding:10px 12px;margin-bottom:10px">
+            <div style="font-size:10px;font-weight:700;color:var(--rose);margin-bottom:4px">⚠️ PADRÃO SISTÊMICO</div>
+            <div style="font-size:11.5px;color:var(--text);line-height:1.6">As frentes que mais travam em plataforma são as mesmas que mais carecem de processo definido — a sobreposição não é acaso. Quando falta guia operacional, qualquer instabilidade de sistema vira bloqueio total.</div>
+          </div>
+          <div style="background:#F0FDF4;border-radius:6px;padding:10px 12px">
+            <div style="font-size:10px;font-weight:700;color:#065F46;margin-bottom:4px">✅ REFERÊNCIA POSITIVA</div>
+            <div style="font-size:11.5px;color:var(--text);line-height:1.6">Fraude é a única frente que combina boa fluência nas ferramentas com alta clareza de processo — os dois pilares se reforçam mutuamente.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: T&Q x Plataformas -->
+      <div class="pan-card" style="border-top:3px solid var(--blue)">
+        <div class="pan-head" style="border-color:var(--blue)">🔗 Treinamento &amp; Qualidade × Plataformas</div>
+        <div class="pan-body">
+          <div style="background:#EFF6FF;border-radius:6px;padding:10px 12px;margin-bottom:10px">
+            <div style="font-size:10px;font-weight:700;color:var(--blue);margin-bottom:4px">🔍 PARADOXO OPERACIONAL</div>
+            <div style="font-size:11.5px;color:var(--text);line-height:1.6">O treinamento é bem avaliado, mas a dificuldade com plataformas persiste. O paradoxo revela que o conteúdo ensinado e as ferramentas usadas no dia a dia vivem em universos separados — preparar bem na teoria não garante fluência na prática.</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Card 3: T&Q x Processos -->
+      <div class="pan-card" style="border-top:3px solid var(--violet)">
+        <div class="pan-head" style="border-color:var(--violet)">🔗 Treinamento &amp; Qualidade × Processos</div>
+        <div class="pan-body">
+          <div style="background:#F5F3FF;border-radius:6px;padding:10px 12px;margin-bottom:10px">
+            <div style="font-size:10px;font-weight:700;color:var(--violet);margin-bottom:4px">🔍 APRENDIZADO DESCONECTADO DA OPERAÇÃO</div>
+            <div style="font-size:11.5px;color:var(--text);line-height:1.6">A contradição central de Abril: o treinamento é aprovado, mas o processo operacional não está definido. Aprender bem o conteúdo não resolve o problema quando a execução do dia a dia não tem um rito claro a seguir — o conhecimento fica sem chão.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: Visão Cruzada Abril -->
+      <div class="pan-card" style="background:#DC2626;border:2px solid #DC2626;border-radius:10px">
+        <div class="pan-head" style="color:#ffffff;border-color:#DC2626">🔎 Visão Cruzada — Fintech como Frente Crítica de Abril</div>
+        <div style="background:rgba(255,255,255,0.12);border-radius:6px;padding:10px 12px;margin-bottom:10px">
+          <div style="font-size:10px;font-weight:700;color:#ffffff;margin-bottom:4px">⚠️ TRIPLA SOBREPOSIÇÃO</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.9);margin-bottom:8px">Fintech aparece entre as piores em todos os 3 blocos analisados em Abril</div>
+          <div style="font-size:12px;font-weight:700;color:#ffffff;margin-bottom:6px">Plataforma → Processo → T&amp;Q</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.9);line-height:1.6">Fintech é a única frente que aparece simultaneamente entre as piores nos três blocos — a coincidência nos três pilares ao mesmo tempo é o que confirma a cadeia sistêmica, não a soma de problemas isolados.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="corr-vg-maio" style="display:none">
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px">
+    <div style="width:4px;height:28px;background:var(--rose);border-radius:4px"></div>
+    <div>
+      <div style="font-size:17px;font-weight:800;color:var(--text);letter-spacing:-.2px">📊 Padrões do Período</div>
+      <div style="font-size:11.5px;color:var(--muted);margin-top:2px">Como os blocos deste período se influenciam entre si</div>
+    </div>
+  </div>
+    <div class="pan-grid" style="grid-template-columns:repeat(2,1fr);margin-bottom:18px">
+
+      <!-- Card 1: Processos x Suporte -->
+      <div class="pan-card" style="border-top:3px solid var(--rose)">
+        <div class="pan-head">🔗 Processos × Suporte Operacional</div>
+        <div class="pan-body">
+          <div style="background:#FFF1F2;border-radius:6px;padding:10px 12px;margin-bottom:10px">
+            <div style="font-size:10px;font-weight:700;color:var(--rose);margin-bottom:4px">🔍 CORRELAÇÃO POR FRENTE CONFIRMADA</div>
+            <div style="font-size:11.5px;color:var(--text);line-height:1.6">A relação é direcional: onde o processo está claro, o suporte é menos demandado e mais eficiente — a FER resolve por conta própria. Onde o processo não existe, o suporte vira muleta: é acionado para preencher a lacuna que o processo deveria cobrir.<br>PX e Fraude são os extremos opostos dessa relação — e a distância entre eles confirma o padrão.</div>
+          </div>
+          <div style="background:#FFFBEB;border-radius:6px;padding:10px 12px">
+            <div style="font-size:10px;font-weight:700;color:#92400E;margin-bottom:4px">⚠️ AÇÃO PRIORITÁRIA</div>
+            <div style="font-size:11.5px;color:var(--text);line-height:1.6">Resolver o processo é resolver o suporte: as frentes com maior acionamento de suporte são exatamente as que carecem de rito operacional definido.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Plataformas x Suporte -->
+      <div class="pan-card" style="border-top:3px solid var(--violet)">
+        <div class="pan-head" style="border-color:var(--violet)">🔗 Plataformas &amp; Sistemas × Suporte Operacional</div>
+        <div class="pan-body">
+          <div style="background:#F5F3FF;border-radius:6px;padding:10px 12px;margin-bottom:10px">
+            <div style="font-size:10px;font-weight:700;color:var(--violet);margin-bottom:4px">🔍 PADRÃO IDENTIFICADO</div>
+            <div style="font-size:11.5px;color:var(--text);line-height:1.6">A dificuldade persistente com as ferramentas — em especial o Knowledge — gera uma demanda de suporte que resolve o sintoma imediato, mas não a causa raiz. O suporte é acionado para compensar o que a ferramenta não entrega: a resposta certa, na hora certa. Enquanto o Knowledge não funcionar de forma confiável, o suporte continuará sendo a válvula de escape da operação.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Suporte x Experiência -->
+      <div class="pan-card" style="border-top:3px solid var(--blue)">
+        <div class="pan-head" style="border-color:var(--blue)">🔗 Suporte Operacional × Experiência do Colaborador</div>
+        <div class="pan-body">
+          <div style="background:#EFF6FF;border-radius:6px;padding:10px 12px;margin-bottom:10px">
+            <div style="font-size:10px;font-weight:700;color:var(--blue);margin-bottom:4px">🔍 CORRELAÇÃO DIRETA</div>
+            <div style="font-size:11.5px;color:var(--text);line-height:1.6">O suporte é o mediador da experiência: quando ele resolve, a FER sente que a empresa está do lado dela — e isso se reflete no NPS. Quando não resolve, a sensação de abandono contamina a percepção geral do trabalho. As frentes com suporte mais efetivo têm consistentemente NPS melhor; as que mais acionam e menos resolvem ficam nas piores posições.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: Visão Cruzada Maio -->
+      <div class="pan-card" style="background:#DC2626;border:2px solid #DC2626;border-radius:10px">
+        <div class="pan-head" style="color:#ffffff;border-color:#DC2626">🔎 Visão Cruzada — PX como Frente Crítica de Maio</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.9);margin-bottom:10px">PX aparece entre as piores em 3 dos 4 blocos analisados em Maio</div>
+        <div style="font-size:13px;font-weight:700;color:#ffffff;margin-bottom:6px">Processos → Suporte → Experiência</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.9);line-height:1.6">PX aparece nas piores posições nos três blocos ao mesmo tempo — e a ordem importa: a lacuna de processo alimenta o excesso de suporte, que por sua vez não consegue compensar a experiência deteriorada. Uma frente prioritária, uma cadeia de intervenção clara.</div>
+      </div>
+
+    </div>
+  </div>
+
 </section>
 
 </main>
@@ -2277,20 +2304,20 @@ const CALENDARIOS = {
     { icon: '🛠️', nome: 'Suporte Operacional',    status: 'plan', data: '05/06/2026', page: 'suporte' },
     { icon: '⭐', nome: 'Experiência do Agente',   status: 'plan', data: '12/06/2026', page: 'experiencia' },
     { icon: '🖥️', nome: 'Plataformas e Sistemas',  status: 'plan', data: '19/06/2026', page: 'plataformas' },
-    { icon: '🎓', nome: 'Treinamento e Qualidade', status: 'plan', data: '26/06/2026', page: 'treinamento' }
+    { icon: '📋', nome: 'Processos',               status: 'plan', data: '26/06/2026', page: 'processos' }
   ],
   'julho-26': [
-    { icon: '⭐', nome: 'Exp. do Colaborador',     status: 'plan', data: '03/07/2026', page: 'experiencia' },
-    { icon: '🖥️', nome: 'Plataformas e Sistemas',  status: 'plan', data: '10/07/2026', page: 'plataformas' },
-    { icon: '📋', nome: 'Processos',               status: 'plan', data: '17/07/2026', page: 'processos' },
-    { icon: '🎓', nome: 'Treinamento e Qualidade', status: 'plan', data: '24/07/2026', page: 'treinamento' },
-    { icon: '🛠️', nome: 'Suporte Operacional',    status: 'plan', data: '31/07/2026', page: 'suporte' }
+    { icon: '🎓', nome: 'Treinamento e Qualidade', status: 'plan', data: '03/07/2026', page: 'treinamento' },
+    { icon: '🛠️', nome: 'Suporte Operacional',    status: 'plan', data: '10/07/2026', page: 'suporte' },
+    { icon: '⭐', nome: 'Exp. do Colaborador',     status: 'plan', data: '17/07/2026', page: 'experiencia' },
+    { icon: '🖥️', nome: 'Plataformas e Sistemas',  status: 'plan', data: '24/07/2026', page: 'plataformas' },
+    { icon: '📋', nome: 'Processos',               status: 'plan', data: '31/07/2026', page: 'processos' }
   ],
   'agosto-26': [
-    { icon: '⭐', nome: 'Exp. do Colaborador',     status: 'plan', data: '07/08/2026', page: 'experiencia' },
-    { icon: '🖥️', nome: 'Plataformas e Sistemas',  status: 'plan', data: '14/08/2026', page: 'plataformas' },
-    { icon: '📋', nome: 'Processos',               status: 'plan', data: '21/08/2026', page: 'processos' },
-    { icon: '🎓', nome: 'Treinamento e Qualidade', status: 'plan', data: '28/08/2026', page: 'treinamento' }
+    { icon: '🎓', nome: 'Treinamento e Qualidade', status: 'plan', data: '07/08/2026', page: 'treinamento' },
+    { icon: '🛠️', nome: 'Suporte Operacional',    status: 'plan', data: '14/08/2026', page: 'suporte' },
+    { icon: '⭐', nome: 'Exp. do Colaborador',     status: 'plan', data: '21/08/2026', page: 'experiencia' },
+    { icon: '🖥️', nome: 'Plataformas e Sistemas',  status: 'plan', data: '28/08/2026', page: 'plataformas' }
   ],
   'setembro-26': [
     { icon: '🛠️', nome: 'Suporte Operacional',    status: 'plan', data: '04/09/2026', page: 'suporte' },
@@ -2659,7 +2686,7 @@ const PANELS_MAIO = [
     { label: 'Participação',   val: '88,0%', cls: 'val-green' },
     { label: 'Facilidade',     val: '4.46',  cls: 'val-green' },
     { label: 'NPS médio',      val: '8.43',  cls: 'val-green' },
-    { label: 'NPS Score',      val: '53,1%', cls: 'val-green' },
+    { label: 'Recomendação do Programa',      val: '53,1%', cls: 'val-green' },
     { label: 'Sem melhoria',   val: '18,2%', cls: 'val-rose' }
   ]},
   { head: '🖥️ Plataformas e Sistemas', periodo: '15/05', rows: [
@@ -2869,6 +2896,37 @@ const INSIGHTS = {
   ]
 };
 
+
+const PLAT_INSIGHTS = {
+  'abril-26': [
+    { tipo: 'ic-c', nivel: '🔴 Crítico',
+      texto: 'Knowledge concentra <strong>65,5%</strong> das dificuldades de plataforma — presente em todas as 7 frentes. É a principal fricção operacional do ciclo, muito acima de qualquer outra ferramenta.' },
+    { tipo: 'ic-w', nivel: '🟡 Atenção',
+      texto: '<strong>PX</strong> com 60,9% de participação — 20,1pp abaixo da meta de 81%. AeC abaixo da meta em CX (70,0%). Engajamento precisa de ação focada nessas células.' },
+    { tipo: 'ic-g', nivel: '🟢 Positivo',
+      texto: 'Oráculo percebido como ferramenta <strong>mais fácil</strong> cresce +4pp vs ciclo anterior — impacto positivo da atualização recente.' }
+  ],
+  'maio-26': [
+    { tipo: 'ic-c', nivel: '🔴 Crítico',
+      texto: 'Knowledge é a principal dor pelo <strong>2º ciclo consecutivo</strong> — 458 menções em Mai/26. Alta participação (90,2%) não reduziu a fricção. O problema é de conteúdo, não de engajamento.' },
+    { tipo: 'ic-w', nivel: '🟡 Atenção',
+      texto: '<strong>CX AeC</strong> é a única célula abaixo da meta (79,2%). Gap de 18,2pp em relação ao CSU (97,4%) na mesma frente — deficit operacionalmente localizado.' },
+    { tipo: 'ic-g', nivel: '🟢 Positivo',
+      texto: 'Pela primeira vez no programa, <strong>todas as 7 frentes</strong> atingiram a meta simultaneamente. Maior salto: PX +27,2pp vs Abril.' }
+  ]
+};
+function renderPlatInsights(periodo) {
+  var el = document.getElementById('plat-insights-container');
+  if (!el) return;
+  var items = PLAT_INSIGHTS[periodo];
+  if (!items) {
+    el.innerHTML = '<div class="ic2 ic-w"><div class="il">📅 Período sem dados</div><p>Insights disponíveis para Abril/26 e Maio/26.</p></div>';
+    return;
+  }
+  el.innerHTML = items.map(function(i) {
+    return '<div class="ic2 '+i.tipo+'"><div class="il">'+i.nivel+'</div><p>'+i.texto+'</p></div>';
+  }).join('');
+}
 function renderInsights(periodo){
   var el = document.getElementById('insight-cards-container');
   if(!el) return;
@@ -2902,19 +2960,19 @@ const MESES_GLOBAL = [
     { tema: 'Suporte Operacional',    ciclo: 'Mai/26', d: '05/06', pct: null, s: 'plan' },
     { tema: 'Experiência do Agente',  ciclo: 'Mai/26', d: '12/06', pct: null, s: 'plan' },
     { tema: 'Plataformas & Sistemas', ciclo: 'Mai/26', d: '19/06', pct: null, s: 'plan' },
-    { tema: 'Treinamento & Qualidade',ciclo: 'Mai/26', d: '26/06', pct: null, s: 'plan' }
+    { tema: 'Processos',              ciclo: 'Mai/26', d: '26/06', pct: null, s: 'plan' }
   ]},
   { m: 'Julho/26', meta: 82, blocos: [
-    { tema: 'Suporte Operacional',    ciclo: 'Jun/26', d: '03/07', pct: null, s: 'plan' },
-    { tema: 'Exp. do Colaborador',    ciclo: 'Jun/26', d: '10/07', pct: null, s: 'plan' },
-    { tema: 'Plataformas & Sistemas', ciclo: 'Jun/26', d: '17/07', pct: null, s: 'plan' },
-    { tema: 'Processos',              ciclo: 'Jun/26', d: '24/07', pct: null, s: 'plan' }
+    { tema: 'Treinamento & Qualidade',ciclo: 'Jun/26', d: '03/07', pct: null, s: 'plan' },
+    { tema: 'Suporte Operacional',    ciclo: 'Jun/26', d: '10/07', pct: null, s: 'plan' },
+    { tema: 'Exp. do Colaborador',    ciclo: 'Jun/26', d: '17/07', pct: null, s: 'plan' },
+    { tema: 'Plataformas & Sistemas', ciclo: 'Jun/26', d: '24/07', pct: null, s: 'plan' }
   ]},
   { m: 'Agosto/26', meta: 82, blocos: [
-    { tema: 'Treinamento & Qualidade',ciclo: 'Jul/26', d: '07/08', pct: null, s: 'plan' },
-    { tema: 'Suporte Operacional',    ciclo: 'Jul/26', d: '14/08', pct: null, s: 'plan' },
-    { tema: 'Exp. do Colaborador',    ciclo: 'Jul/26', d: '21/08', pct: null, s: 'plan' },
-    { tema: 'Plataformas & Sistemas', ciclo: 'Jul/26', d: '28/08', pct: null, s: 'plan' }
+    { tema: 'Processos',              ciclo: 'Jul/26', d: '07/08', pct: null, s: 'plan' },
+    { tema: 'Treinamento & Qualidade',ciclo: 'Jul/26', d: '14/08', pct: null, s: 'plan' },
+    { tema: 'Suporte Operacional',    ciclo: 'Jul/26', d: '21/08', pct: null, s: 'plan' },
+    { tema: 'Exp. do Colaborador',    ciclo: 'Jul/26', d: '28/08', pct: null, s: 'plan' }
   ]}
 ];
 
@@ -3062,8 +3120,8 @@ function renderAcompanhamentoMensal() {
       + '<span style="background:' + badgeBg + ';color:' + badgeCor + ';padding:3px 10px;border-radius:99px;font-size:10px;font-weight:700">' + badgeTxt + '</span>'
       + '</div>'
       + (media !== null
-        ? '<div style="display:flex;align-items:baseline;gap:6px"><span style="font-size:28px;font-weight:800;color:' + corMedia + '">' + media.toFixed(1).replace('.',',') + '%</span><span style="font-size:11px;color:var(--muted)">Participação · Meta ' + mes.meta + '%</span></div>'
-        : '<div style="display:flex;align-items:center;gap:6px"><span style="font-size:18px;font-weight:700;color:var(--muted)">&mdash;</span><span style="font-size:11px;color:var(--muted)">Participação · Meta ' + mes.meta + '%</span></div>')
+        ? '<div style="display:flex;align-items:baseline;gap:6px"><span style="font-size:28px;font-weight:800;color:' + corMedia + '">' + media.toFixed(1).replace('.',',') + '%</span><span style="font-size:11px;color:var(--muted);white-space:nowrap">Participação · Meta ' + mes.meta + '%</span></div>'
+        : '<div style="display:flex;align-items:center;gap:6px"><span style="font-size:18px;font-weight:700;color:var(--muted)">&mdash;</span><span style="font-size:11px;color:var(--muted);white-space:nowrap">Participação · Meta ' + mes.meta + '%</span></div>')
       + '</div>'
       + '<div style="padding:8px 16px">' + linhas + '</div>'
       + '</div>';
@@ -3579,8 +3637,373 @@ function renderEvolucaoMensal() {
   setEl('em-total-mai',   totalMai !== null ? '<strong>' + fmtEM(totalMai) + '</strong>' : '<span style="color:var(--muted)">—</span>');
   setEl('em-total-evol',  fmtEvol(totalAbr, totalMai));
 }
+
+// ================================================================
+// DIAGNÓSTICO RÁPIDO DINÂMICO — dados por período
+// ================================================================
+const DIAGNOSTICO_DATA = {
+  'abril-26': {
+    card1: {
+      icon: '📉',
+      eyebrow: 'Onde estamos piorando?',
+      color: 'var(--rose)',
+      bg: '#FFF1F2',
+      border: 'var(--rose-mid)',
+      textColor: '#6B4F4F',
+      valor: 'Fintech & PX',
+      subtexto: 'Fintech: pior em Plataformas (7,9% sem dif.) e Processos (25,1%). PX acumula dificuldades em Knowledge e processo definido.',
+      badges: [
+        { bg: 'var(--rose)', color: '#fff', label: 'CRÍTICO' },
+        { bg: '#FFF1F2', color: 'var(--rose)', border: 'var(--rose-mid)', label: '2 frentes em alerta' }
+      ]
+    },
+    card2: {
+      icon: '⚠️',
+      eyebrow: 'Abaixo da meta?',
+      color: 'var(--amber)',
+      bg: '#FFFBEB',
+      border: '#FDE68A',
+      textColor: '#6B4F4F',
+      valor: 'AeC · CX',
+      subtexto: '79,2% participação — abaixo da meta de <strong>81%</strong>. AeC consistentemente abaixo da meta nos ciclos monitorados.',
+      badges: [
+        { bg: 'var(--amber)', color: '#fff', label: 'ATENÇÃO' },
+        { bg: '#FFFBEB', color: 'var(--amber)', border: '#FDE68A', label: 'Meta: 81%' }
+      ]
+    },
+    card3: {
+      icon: '🔥',
+      eyebrow: 'Dor nº 1 agora',
+      color: '#DC2626',
+      bg: '#FEF2F2',
+      border: '#FECACA',
+      textColor: '#6B4F4F',
+      valor: 'Knowledge desatualizado',
+      subtexto: '32 artigos · 45 menções. Processo não definido soma mais 15 artigos e 26 menções — ambos bloqueiam o atendimento diário.',
+      badges: [
+        { bg: '#DC2626', color: '#fff', label: 'DOR SISTÊMICA' },
+        { bg: '#FEF2F2', color: '#DC2626', border: '#FECACA', label: '45 menções' }
+      ]
+    },
+    card4: {
+      icon: '📊',
+      eyebrow: 'O que mudou?',
+      color: 'var(--green)',
+      bg: '#F0FDF4',
+      border: '#BBF7D0',
+      textColor: '#6B4F4F',
+      valor: 'Base do programa',
+      subtexto: 'Primeiro ciclo completo: Plataformas 76,3% e Processos 25,1% sem dif. Referência inicial estabelecida.',
+      badges: [
+        { bg: 'var(--green)', color: '#fff', label: 'REFERÊNCIA' },
+        { bg: '#F0FDF4', color: 'var(--green)', border: '#BBF7D0', label: 'Ciclo 01' }
+      ]
+    }
+  },
+  'maio-26': {
+    card1: {
+      icon: '📉',
+      eyebrow: 'Onde estamos piorando?',
+      color: 'var(--rose)',
+      bg: '#FFF1F2',
+      border: 'var(--rose-mid)',
+      textColor: '#6B4F4F',
+      valor: 'PX · Fintech',
+      subtexto: 'PX: pior em Processos (57,2%) e Suporte. Fintech persiste crítico em T&Q (4,38/5 — pior frente).',
+      badges: [
+        { bg: 'var(--rose)', color: '#fff', label: 'CRÍTICO' },
+        { bg: '#FFF1F2', color: 'var(--rose)', border: 'var(--rose-mid)', label: '2 frentes em alerta' }
+      ]
+    },
+    card2: {
+      icon: '⚠️',
+      eyebrow: 'Abaixo da meta?',
+      color: 'var(--amber)',
+      bg: '#FFFBEB',
+      border: '#FDE68A',
+      textColor: '#6B4F4F',
+      valor: 'AeC · CX',
+      subtexto: '79,2% participação em Plataformas — AeC segue abaixo da meta de <strong>81%</strong> pelo 2º ciclo consecutivo.',
+      badges: [
+        { bg: 'var(--amber)', color: '#fff', label: 'ATENÇÃO' },
+        { bg: '#FFFBEB', color: 'var(--amber)', border: '#FDE68A', label: 'Meta: 81%' }
+      ]
+    },
+    card3: {
+      icon: '🔥',
+      eyebrow: 'Dor nº 1 agora',
+      color: '#DC2626',
+      bg: '#FEF2F2',
+      border: '#FECACA',
+      textColor: '#6B4F4F',
+      valor: 'Processo não definido',
+      subtexto: 'PX com apenas 57,2% sem dificuldade. Suporte sendo acionado como compensação à falta de rito operacional.',
+      badges: [
+        { bg: '#DC2626', color: '#fff', label: 'DOR SISTÊMICA' },
+        { bg: '#FEF2F2', color: '#DC2626', border: '#FECACA', label: 'PX crítico' }
+      ]
+    },
+    card4: {
+      icon: '📊',
+      eyebrow: 'O que mudou?',
+      color: 'var(--green)',
+      bg: '#F0FDF4',
+      border: '#BBF7D0',
+      textColor: '#6B4F4F',
+      valor: '+1,4pp participação',
+      subtexto: 'Plataformas: 76,3% → 77,7% (Abr→Mai). Processos: nova entrada Mai/26 com 69,4%. Meta do programa: <strong>81%</strong>.',
+      badges: [
+        { bg: 'var(--green)', color: '#fff', label: 'MELHORA' },
+        { bg: '#F0FDF4', color: 'var(--green)', border: '#BBF7D0', label: 'Abr→Mai' }
+      ]
+    }
+  }
+};
+
+function _buildDiagCard(cfg) {
+  var badgesHtml = cfg.badges.map(function(b) {
+    var bStyle = 'background:' + b.bg + ';color:' + b.color + ';padding:2px 8px;border-radius:99px;font-size:9px;font-weight:700;';
+    if (b.border) bStyle += 'border:1px solid ' + b.border + ';';
+    return '<span style="' + bStyle + '">' + b.label + '</span>';
+  }).join('');
+
+  return '<div style="background:' + cfg.bg + ';border:1.5px solid ' + cfg.border + ';border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;border-top:3px solid ' + cfg.color + ';">'
+    + '<div style="display:flex;align-items:center;gap:6px;">'
+    +   '<span style="font-size:16px;">' + cfg.icon + '</span>'
+    +   '<span style="font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:' + cfg.color + ';">' + cfg.eyebrow + '</span>'
+    + '</div>'
+    + '<div style="font-size:' + (cfg.eyebrow === 'Dor nº 1 agora' ? '16px' : '20px') + ';font-weight:800;color:' + cfg.color + ';line-height:1.15;">' + cfg.valor + '</div>'
+    + '<div style="font-size:11px;color:' + cfg.textColor + ';line-height:1.5;">' + cfg.subtexto + '</div>'
+    + '<div style="margin-top:4px;display:flex;gap:6px;flex-wrap:wrap;">' + badgesHtml + '</div>'
+    + '</div>';
+}
+
+function _buildPlannedCard(eyebrow, icon) {
+  return '<div style="background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;border-top:3px solid var(--border);">'
+    + '<div style="display:flex;align-items:center;gap:6px;">'
+    +   '<span style="font-size:16px;">' + icon + '</span>'
+    +   '<span style="font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);">' + eyebrow + '</span>'
+    + '</div>'
+    + '<div style="font-size:16px;font-weight:800;color:var(--muted);line-height:1.15;">📅 Período planejado</div>'
+    + '<div style="font-size:11px;color:var(--muted);line-height:1.5;">Dados disponíveis após encerramento do ciclo.</div>'
+    + '<div style="margin-top:4px;display:flex;gap:6px;flex-wrap:wrap;">'
+    +   '<span style="background:var(--border);color:var(--muted);padding:2px 8px;border-radius:99px;font-size:9px;font-weight:700;">PLANEJADO</span>'
+    + '</div>'
+    + '</div>';
+}
+
+function renderDiagnostico() {
+  var panel = document.getElementById('painel-executivo-v5');
+  if (!panel) return;
+
+  var periodo = F.periodo || document.getElementById('f-periodo').value || 'abril-26';
+  var data = DIAGNOSTICO_DATA[periodo];
+
+  if (!data) {
+    // Estado "Planejado"
+    panel.innerHTML =
+      _buildPlannedCard('Onde estamos piorando?', '📉') +
+      _buildPlannedCard('Abaixo da meta?', '⚠️') +
+      _buildPlannedCard('Dor nº 1 agora', '🔥') +
+      _buildPlannedCard('O que mudou?', '📊');
+    return;
+  }
+
+  panel.innerHTML =
+    _buildDiagCard(data.card1) +
+    _buildDiagCard(data.card2) +
+    _buildDiagCard(data.card3) +
+    _buildDiagCard(data.card4);
+}
+
+
+const MATRIZ_KNOWLEDGE_DATA = {
+  'abril-26': {
+    agir_agora: { artigos: null, mencoes: null, pct: 36.1, tipo: 'Processo não definido',
+      descricao: 'Principal dor do ciclo: 36,1% dos analistas não encontraram processo definido para seu atendimento — foco CX e PX. Sem orientação clara, o suporte vira a única saída.',
+      top: [
+        { frente: 'CX', cor_bg: '#dbeafe', cor_text: '#1e40af', artigo: '000001662', freq: '—' },
+        { frente: 'PX', cor_bg: '#d1fae5', cor_text: '#065f46', artigo: '000002110', freq: '—' },
+        { frente: 'CX', cor_bg: '#dbeafe', cor_text: '#1e40af', artigo: '000003742', freq: '—' }
+      ],
+      nota: '* Contagem de artigos por quadrante disponível a partir de Mai/26'
+    },
+    planejar: { artigos: null, mencoes: null, pct: 22.9, tipo: 'Desatualizado',
+      descricao: 'Segunda maior dor: 22,9% relatam artigos desatualizados. Conteúdo existe mas não reflete a realidade operacional atual.',
+      frentes: [
+        { tag: 'CX',  cor_bg: '#dbeafe', cor_text: '#1e40af', detalhe: 'Matriz / Cancelamentos',   nivel: 'Alta',  cor_nivel: 'var(--amber)' },
+        { tag: 'PX',  cor_bg: '#d1fae5', cor_text: '#065f46', detalhe: 'Fluxos desatualizados',    nivel: 'Alta',  cor_nivel: 'var(--amber)' },
+        { tag: 'DX',  cor_bg: '#ede9fe', cor_text: '#5b21b6', detalhe: 'Processos de entrega',     nivel: 'Media', cor_nivel: 'var(--amber)' }
+      ]
+    },
+    delegar: { artigos: null, mencoes: null, tipo: 'Difícil de entender',
+      descricao: 'Conteúdo existe mas linguagem é confusa ou pouco didática. Identificado em relatos abertos — detalhe por artigo disponível a partir de Mai/26.',
+      acao: 'Encaminhar para equipe de Knowledge / Content para revisão de clareza e linguagem.'
+    },
+    monitorar: { artigos: null, mencoes: null, tipo: 'Sem acesso',
+      descricao: 'Baixo volume relatado neste ciclo. Monitorar evolução em ciclos futuros.',
+      obs: 'Contagem detalhada disponível a partir de Mai/26.'
+    }
+  },
+  'maio-26': {
+    agir_agora: { artigos: 32, mencoes: 45, tipo: 'Desatualizado',
+      descricao: 'Artigos com conteúdo desatualizado bloqueiam decisões em tempo real. Impacto direto no CSAT.',
+      top: [
+        { frente: 'DX', cor_bg: '#ede9fe', cor_text: '#5b21b6', artigo: '000001823', freq: '7×' },
+        { frente: 'PX', cor_bg: '#d1fae5', cor_text: '#065f46', artigo: '000002110', freq: '4×' },
+        { frente: 'CX', cor_bg: '#dbeafe', cor_text: '#1e40af', artigo: '000004186', freq: '3×' }
+      ]
+    },
+    planejar: { artigos: 15, mencoes: 26, tipo: 'Processo não definido',
+      descricao: 'Sem documentação estruturada. Cria inconsistência no atendimento — precisa de sprint dedicado.',
+      frentes: [
+        { tag: 'PX', cor_bg: '#d1fae5', cor_text: '#065f46', detalhe: 'Fintech / Colab+', nivel: 'Alta', cor_nivel: 'var(--amber)' },
+        { tag: 'CX', cor_bg: '#dbeafe', cor_text: '#1e40af', detalhe: 'Cancelamentos / Vouchers', nivel: 'Média', cor_nivel: 'var(--amber)' },
+        { tag: 'Fintech', cor_bg: '#fef3c7', cor_text: '#92400e', detalhe: 'Promoções / Simples Nacional', nivel: 'Alta', cor_nivel: 'var(--amber)' }
+      ]
+    },
+    delegar: { artigos: 18, mencoes: 32, tipo: 'Difícil de entender',
+      descricao: 'Conteúdo existe mas linguagem é confusa. Pode ser resolvido por UX Writing / Content Design.',
+      acao: 'Encaminhar lista de artigos para equipe de Knowledge / Content para revisão de clareza e linguagem. Não requer reescrita de processo.'
+    },
+    monitorar: { artigos: 3, mencoes: 4, tipo: 'Sem acesso',
+      descricao: 'Baixo volume e impacto isolado. Monitorar evolução nos próximos ciclos antes de agir.',
+      obs: '⏳ Manter em observação. Se volume crescer para &gt;5 menções no próximo ciclo, mover para Delegar.'
+    }
+  }
+};
+
+function renderMatrizKnowledge() {
+  var periodo = F.periodo || 'abril-26';
+  var body = document.getElementById('matriz-knowledge-body');
+  var subtitle = document.getElementById('matriz-knowledge-subtitle');
+  if (!body) return;
+
+  var periodoLabels = {
+    'abril-26': 'Abr/26', 'maio-26': 'Mai/26', 'junho-26': 'Jun/26',
+    'julho-26': 'Jul/26', 'agosto-26': 'Ago/26', 'setembro-26': 'Set/26',
+    'outubro-26': 'Out/26', 'novembro-26': 'Nov/26', 'dezembro-26': 'Dez/26'
+  };
+  var lbl = periodoLabels[periodo] || periodo;
+
+  var d = MATRIZ_KNOWLEDGE_DATA[periodo];
+
+  if (!d) {
+    // Estado sem dados
+    if (subtitle) subtitle.textContent = 'Classificação por urgência (menções) × impacto (tipo de problema)';
+    body.innerHTML = '<div style="background:var(--rose-soft,#FEF2F2);border:2px solid var(--rose-mid,#FECACA);border-radius:12px;padding:32px;text-align:center;color:#991B1B;font-size:13px;line-height:1.7;">'
+      + '<div style="font-size:28px;margin-bottom:12px;">📌</div>'
+      + '<div style="font-weight:700;font-size:14px;margin-bottom:8px;">Dados não disponíveis para este período</div>'
+      + '<div style="color:#B91C1C;">Dados do Knowledge disponíveis apenas para blocos com Processos.<br>Selecione <strong>Maio/26</strong> ou posterior.</div>'
+      + '</div>';
+    return;
+  }
+
+  // Tem dados → renderiza os 4 quadrantes
+  if (subtitle) subtitle.textContent = 'Classificação por urgência (menções) × impacto (tipo de problema) · dados do ciclo ' + lbl;
+
+  // Quadrante AGIR AGORA
+  var topHtml = d.agir_agora.top.map(function(t) {
+    return '<div style="display:flex;align-items:center;gap:6px;padding:4px 8px;background:#fff;border-radius:6px;border:1px solid #FECACA;">'
+      + '<span style="background:' + t.cor_bg + ';color:' + t.cor_text + ';padding:1px 6px;border-radius:99px;font-size:9px;font-weight:700;">' + t.frente + '</span>'
+      + '<span style="font-family:monospace;font-size:10px;color:#475569;flex:1;">' + t.artigo + '</span>'
+      + '<span style="background:var(--rose);color:#fff;padding:1px 6px;border-radius:99px;font-size:9px;font-weight:700;">' + t.freq + '</span>'
+      + '</div>';
+  }).join('');
+
+  var q1 = '<div style="background:#FEF2F2;border:2px solid #FECACA;border-radius:12px;padding:18px;border-top:4px solid var(--rose);position:relative;">'
+    + '<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">'
+    + '<div><div style="font-size:9px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:#6B7280;margin-bottom:4px;">⬆ Alto Impacto · ⬆ Alta Urgência</div>'
+    + '<div style="font-size:18px;font-weight:800;color:var(--rose);">🚨 AGIR AGORA</div></div>'
+    + '<span style="background:var(--rose);color:#fff;padding:3px 10px;border-radius:99px;font-size:9px;font-weight:800;white-space:nowrap;">CRÍTICO</span>'
+    + '</div>'
+    + '<div style="display:flex;gap:16px;margin-bottom:12px;">'
+    + '<div style="text-align:center;"><div style="font-size:28px;font-weight:800;color:var(--rose);line-height:1;">' + ((d.agir_agora.artigos !== null && d.agir_agora.artigos !== undefined) ? d.agir_agora.artigos : '—') + '</div><div style="font-size:9px;color:#6B4F4F;">artigos</div></div>'
+    + '<div style="text-align:center;"><div style="font-size:28px;font-weight:800;color:var(--rose);line-height:1;">' + ((d.agir_agora.mencoes !== null && d.agir_agora.mencoes !== undefined) ? d.agir_agora.mencoes : '—') + '</div><div style="font-size:9px;color:#6B4F4F;">menções</div></div>'
+    + '<div style="flex:1;background:#fff;border-radius:8px;padding:8px 10px;border:1px solid #FECACA;">'
+    + '<div style="font-size:9px;font-weight:700;color:#991B1B;margin-bottom:4px;">Tipo: ' + d.agir_agora.tipo + '</div>'
+    + '<div style="font-size:10px;color:#6B4F4F;line-height:1.5;">' + d.agir_agora.descricao + '</div>'
+    + '</div></div>'
+    + '<div style="font-size:10px;font-weight:700;color:#991B1B;margin-bottom:6px;">📋 Top artigos mencionados:</div>'
+    + '<div style="display:flex;flex-direction:column;gap:4px;">' + topHtml + '</div>'
+    + '</div>';
+
+  // Quadrante PLANEJAR
+  var frentesHtml = d.planejar.frentes.map(function(f) {
+    return '<div style="display:flex;align-items:center;gap:6px;padding:4px 8px;background:#fff;border-radius:6px;border:1px solid #FDE68A;">'
+      + '<span style="background:' + f.cor_bg + ';color:' + f.cor_text + ';padding:1px 6px;border-radius:99px;font-size:9px;font-weight:700;">' + f.tag + '</span>'
+      + '<span style="font-size:10px;color:#475569;flex:1;">' + f.detalhe + '</span>'
+      + '<span style="background:' + f.cor_nivel + ';color:#fff;padding:1px 6px;border-radius:99px;font-size:9px;font-weight:700;">' + f.nivel + '</span>'
+      + '</div>';
+  }).join('');
+
+  var q2 = '<div style="background:#FFFBEB;border:2px solid #FDE68A;border-radius:12px;padding:18px;border-top:4px solid var(--amber);position:relative;">'
+    + '<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">'
+    + '<div><div style="font-size:9px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:#6B7280;margin-bottom:4px;">⬆ Alto Impacto · ⬇ Baixa Urgência</div>'
+    + '<div style="font-size:18px;font-weight:800;color:var(--amber);">📅 PLANEJAR</div></div>'
+    + '<span style="background:var(--amber);color:#fff;padding:3px 10px;border-radius:99px;font-size:9px;font-weight:800;white-space:nowrap;">PLANEJAR</span>'
+    + '</div>'
+    + '<div style="display:flex;gap:16px;margin-bottom:12px;">'
+    + '<div style="text-align:center;"><div style="font-size:28px;font-weight:800;color:var(--amber);line-height:1;">' + ((d.planejar.artigos !== null && d.planejar.artigos !== undefined) ? d.planejar.artigos : '—') + '</div><div style="font-size:9px;color:#6B4F4F;">artigos</div></div>'
+    + '<div style="text-align:center;"><div style="font-size:28px;font-weight:800;color:var(--amber);line-height:1;">' + ((d.planejar.mencoes !== null && d.planejar.mencoes !== undefined) ? d.planejar.mencoes : '—') + '</div><div style="font-size:9px;color:#6B4F4F;">menções</div></div>'
+    + '<div style="flex:1;background:#fff;border-radius:8px;padding:8px 10px;border:1px solid #FDE68A;">'
+    + '<div style="font-size:9px;font-weight:700;color:#92400E;margin-bottom:4px;">Tipo: ' + d.planejar.tipo + '</div>'
+    + '<div style="font-size:10px;color:#6B4F4F;line-height:1.5;">' + d.planejar.descricao + '</div>'
+    + '</div></div>'
+    + '<div style="font-size:10px;font-weight:700;color:#92400E;margin-bottom:6px;">📋 Frentes mais afetadas:</div>'
+    + '<div style="display:flex;flex-direction:column;gap:4px;">' + frentesHtml + '</div>'
+    + '</div>';
+
+  // Quadrante DELEGAR
+  var q3 = '<div style="background:#EFF6FF;border:2px solid #BFDBFE;border-radius:12px;padding:18px;border-top:4px solid var(--blue);position:relative;">'
+    + '<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">'
+    + '<div><div style="font-size:9px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:#6B7280;margin-bottom:4px;">⬇ Baixo Impacto · ⬆ Alta Urgência</div>'
+    + '<div style="font-size:18px;font-weight:800;color:var(--blue);">📤 DELEGAR</div></div>'
+    + '<span style="background:var(--blue);color:#fff;padding:3px 10px;border-radius:99px;font-size:9px;font-weight:800;white-space:nowrap;">DELEGAR</span>'
+    + '</div>'
+    + '<div style="display:flex;gap:16px;margin-bottom:12px;">'
+    + '<div style="text-align:center;"><div style="font-size:28px;font-weight:800;color:var(--blue);line-height:1;">' + ((d.delegar.artigos !== null && d.delegar.artigos !== undefined) ? d.delegar.artigos : '—') + '</div><div style="font-size:9px;color:#6B4F4F;">artigos</div></div>'
+    + '<div style="text-align:center;"><div style="font-size:28px;font-weight:800;color:var(--blue);line-height:1;">' + ((d.delegar.mencoes !== null && d.delegar.mencoes !== undefined) ? d.delegar.mencoes : '—') + '</div><div style="font-size:9px;color:#6B4F4F;">menções</div></div>'
+    + '<div style="flex:1;background:#fff;border-radius:8px;padding:8px 10px;border:1px solid #BFDBFE;">'
+    + '<div style="font-size:9px;font-weight:700;color:#1E40AF;margin-bottom:4px;">Tipo: ' + d.delegar.tipo + '</div>'
+    + '<div style="font-size:10px;color:#6B4F4F;line-height:1.5;">' + d.delegar.descricao + '</div>'
+    + '</div></div>'
+    + '<div style="font-size:10px;font-weight:700;color:#1E40AF;margin-bottom:6px;">💡 Ação sugerida:</div>'
+    + '<div style="padding:8px 12px;background:#fff;border-radius:8px;border:1px solid #BFDBFE;font-size:11px;color:#475569;line-height:1.5;">' + d.delegar.acao + '</div>'
+    + '</div>';
+
+  // Quadrante MONITORAR
+  var q4 = '<div style="background:#F8FAFC;border:2px solid #E2E8F0;border-radius:12px;padding:18px;border-top:4px solid #94A3B8;position:relative;">'
+    + '<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;">'
+    + '<div><div style="font-size:9px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:#6B7280;margin-bottom:4px;">⬇ Baixo Impacto · ⬇ Baixa Urgência</div>'
+    + '<div style="font-size:18px;font-weight:800;color:#64748B;">👁️ MONITORAR</div></div>'
+    + '<span style="background:#64748B;color:#fff;padding:3px 10px;border-radius:99px;font-size:9px;font-weight:800;white-space:nowrap;">MONITORAR</span>'
+    + '</div>'
+    + '<div style="display:flex;gap:16px;margin-bottom:12px;">'
+    + '<div style="text-align:center;"><div style="font-size:28px;font-weight:800;color:#64748B;line-height:1;">' + (((d.monitorar.artigos !== null && d.monitorar.artigos !== undefined) ? d.monitorar.artigos : '—') !== null ? ((d.monitorar.artigos !== null && d.monitorar.artigos !== undefined) ? d.monitorar.artigos : '—') : '—') + '</div><div style="font-size:9px;color:#6B4F4F;">artigos</div></div>'
+    + '<div style="text-align:center;"><div style="font-size:28px;font-weight:800;color:#64748B;line-height:1;">' + (((d.monitorar.mencoes !== null && d.monitorar.mencoes !== undefined) ? d.monitorar.mencoes : '—') !== null ? ((d.monitorar.mencoes !== null && d.monitorar.mencoes !== undefined) ? d.monitorar.mencoes : '—') : '—') + '</div><div style="font-size:9px;color:#6B4F4F;">menções</div></div>'
+    + '<div style="flex:1;background:#fff;border-radius:8px;padding:8px 10px;border:1px solid #E2E8F0;">'
+    + '<div style="font-size:9px;font-weight:700;color:#475569;margin-bottom:4px;">Tipo: ' + d.monitorar.tipo + '</div>'
+    + '<div style="font-size:10px;color:#6B4F4F;line-height:1.5;">' + d.monitorar.descricao + '</div>'
+    + '</div></div>'
+    + '<div style="padding:8px 12px;background:#fff;border-radius:8px;border:1px solid #E2E8F0;font-size:11px;color:#64748B;line-height:1.5;">' + d.monitorar.obs + '</div>'
+    + '</div>';
+
+  body.innerHTML = '<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;position:relative;"><div style="display:contents;">'
+    + q1 + q2 + q3 + q4
+    + '</div></div>'
+    + '<div style="margin-top:12px;padding:10px 16px;background:#F8FAFC;border-radius:8px;border:1px solid var(--border);display:flex;gap:24px;flex-wrap:wrap;font-size:11px;color:var(--muted);">'
+    + '<div><strong style="color:var(--text);">Impacto:</strong> Alto = Desatualizado / Processo Não Definido (bloqueia atendimento) · Baixo = Difícil de Entender / Sem Acesso (não bloqueia)</div>'
+    + '<div><strong style="color:var(--text);">Urgência:</strong> Alta = &gt;10 menções · Baixa = ≤10 menções</div>'
+    + '</div>';
+}
+
 function renderAll(){
+  renderMatrizKnowledge();
+  renderPlatInsights(F.periodo || 'abril-26');
+  renderPlatInsights(F.periodo || 'abril-26');
   renderCorrelacao();
+  renderDiagnostico();renderPlatInsights(F.periodo||'abril-26');
   
   renderPanGrid(F.periodo || 'abril-26');
   renderSuporteExp(F.periodo || 'abril-26');
@@ -3653,7 +4076,8 @@ function applyFilters(){
   };
   const platSub = document.getElementById('plat-subtitle');
   if(platSub) platSub.textContent = platSubtitleMap[periodo] || platSubtitleMap['abril-26'];
-  F.op=document.getElementById('f-operacao').value;F.frente=document.getElementById('f-frente').value;F.periodo=document.getElementById('f-periodo').value;syncChips('plat-chips',F.frente);syncChips('proc-chips',F.frente);renderAll();}
+  F.op=document.getElementById('f-operacao').value;F.frente=document.getElementById('f-frente').value;F.periodo=document.getElementById('f-periodo').value;syncChips('plat-chips',F.frente);syncChips('proc-chips',F.frente);renderDiagnostico();
+  renderPlatInsights(F.periodo || 'abril-26');renderAll();}
 function clearAllFilters(){F={op:'',frente:'',periodo:''};document.getElementById('f-operacao').value='';document.getElementById('f-frente').value='';document.getElementById('f-periodo').value='';syncChips('plat-chips','');syncChips('proc-chips','');renderAll();}
 function filterPlatChip(f){F.frente=f;document.getElementById('f-frente').value=f;syncChips('plat-chips',f);renderAll();}
 function filterProcChip(f){F.frente=f;document.getElementById('f-frente').value=f;syncChips('proc-chips',f);renderAll();}
